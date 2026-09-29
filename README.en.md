@@ -542,6 +542,7 @@ parameter:
 | -d                   | Downgrade coverage allows installation                                                                     |
 | -g                   | Grant all runtime permissions                                                                              |
 | --abi abi-identifier | Force install an apk for a specific ABI, abi-identifier could be armeabi-v7a、arm64-v8a、v86、x86_64, etc. |
+| --bypass-low-target-sdk-block | Ignore the restriction that the application's TargetSDK is lower than the minimum version supported by the device system |
 
 After you run the command to see if similar to the following output (status is `Success`) represents the installation was successful:
 
@@ -573,6 +574,7 @@ Common Installation failed output code, the meaning and possible solutions are a
 
 | Output                                                              | Meaning                                                                                                                                       | solutions                                                                                      |
 |---------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| INSTALL\_FAILED\_DEPRECATED\_SDK\_VERSION                             | The application's TargetSDK is lower than the minimum version supported by the device system                                                  | Update the application's TargetSDK, or use the `--bypass-low-target-sdk-block` parameter when running `adb install` |
 | INSTALL\_FAILED\_ALREADY\_EXISTS                                    | application already exists                                                                                                                    | use `-r` parameters                                                                            |
 | INSTALL\_FAILED\_INVALID\_APK                                       | invalid APK file                                                                                                                              |                                                                                                |
 | INSTALL\_FAILED\_INVALID\_URI                                       | invalid filename APK                                                                                                                          | APK file names to ensure no Chinese                                                            |

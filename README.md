@@ -569,6 +569,7 @@ adb install [-lrtsdg] <path_to_apk>
 | -d                   | 允许降级覆盖安装                                                                      |
 | -g                   | 授予所有运行时权限                                                                    |
 | --abi abi-identifier | 为特定 ABI 强制安装 apk，abi-identifier 可以是 armeabi-v7a、arm64-v8a、v86、x86_64 等 |
+| --bypass-low-target-sdk-block | 忽略应用的 TargetSDK 低于设备系统支持的最低版本的限制 |
 
 运行命令后如果见到类似如下输出（状态为 `Success`）代表安装成功：
 
@@ -600,6 +601,7 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]
 
 | 输出                                                                | 含义                                                                     | 解决办法                                                                           |
 |---------------------------------------------------------------------|--------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| INSTALL\_FAILED\_DEPRECATED\_SDK\_VERSION | 应用的 TargetSDK 低于设备系统支持的最低版本 | 更新应用的 TargetSDK，或 `adb install` 时使用 `--bypass-low-target-sdk-block` 参数|
 | INSTALL\_FAILED\_ALREADY\_EXISTS                                    | 应用已经存在，或卸载了但没卸载干净                                       | `adb install` 时使用 `-r` 参数，或者先 `adb uninstall <packagename>` 再安装        |
 | INSTALL\_FAILED\_INVALID\_APK                                       | 无效的 APK 文件                                                          |                                                                                    |
 | INSTALL\_FAILED\_INVALID\_URI                                       | 无效的 APK 文件名                                                        | 确保 APK 文件名里无中文                                                            |
